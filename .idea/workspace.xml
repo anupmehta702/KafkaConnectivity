@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b33021ac-1cd9-4ade-993a-0be49feb025a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/consumer/AssignConsumerApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/consumergroup/ConsumerApp01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/consumergroup/ConsumerApp02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/consumergroup/ConsumerApp03.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/consumergroup/ProducerApp01.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/consumer/ConsumerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/consumer/ConsumerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/producer/ProducerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/producer/ProducerApp.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,14 +16,15 @@
     <session id="1593433223">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.39" value="2" />
-          <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.44" value="2" />
           <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.56" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -95,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/consumer/ConsumerApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+            <state relative-caret-position="325">
+              <caret line="32" column="16" lean-forward="true" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -475,7 +468,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27114093" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27919462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="DB Browser" order="3" />
@@ -646,8 +639,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/consumer/ConsumerApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+        <state relative-caret-position="325">
+          <caret line="32" column="16" lean-forward="true" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
