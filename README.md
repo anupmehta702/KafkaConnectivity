@@ -118,3 +118,18 @@ To list topic use below command
  **-- KAFKA PERF --**
   .\bin\windows\kafka-producer-perf-test.bat --topic my_partition_topic_one --num-records 50 --record-size 1 --throughput 10 --producer-props bootstrap.servers=localhost:9092 key.serializer=org.apache.kafka.common.serialization.StringSerializer value.serializer=org.apache.kafka.common.serialization.StringSerializer
  
+ **-- AVRO --**
+ 1) Add dependency and plugin in the project
+ 2) Create avsc (user_schema.avsc) file and run mvn clean package .
+ 3) It creates a corresponding java file (User)
+ 
+ **-- Schema Registry --**
+ 1) Download confluent from the site using zip
+ 2) Update /etc/schema-registry.properties to enable schema to connect to kafka .Uncomment below porperty
+ kafkastore.bootstrap.servers=PLAINTEXT://localhost:9092
+ 3) Copy schema-registry-start.bat & schema-registry-run-class.bat in \bin\windows\ 
+ 4) Run cmd  to start schema-registry->
+  C:\confluent-5.5.1\bin\windows\schema-registry-start.bat C:\confluent-5.5.1\etc\schema-registry\schema-registry.properties
+ 5) Run ConsumerUsingAvro application to start listening the topic
+ 6) Run ProducerUsingAvro application to start sending events to topic 
+   

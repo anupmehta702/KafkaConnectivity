@@ -22,8 +22,8 @@ public class ProducerApp {
         */
         try{
             Stream.iterate(0, i -> i + 1)
-                    .limit(150)
-                    .forEach(i -> producer.send(new ProducerRecord("my_partition_topic", i.toString(), "message - " + i)));
+                    .limit(10)
+                    .forEach(i -> producer.send(new ProducerRecord("my_partition_topic", i.toString(), "New message - " + i)));
         }catch(Exception e){
             e.printStackTrace();
 
