@@ -1,5 +1,5 @@
 # KafkaConnectivity
-This contains details to connect to Kafka 
+This contains details to connect to Kafka ,create Producer and consumer to send and receive events .It also has multi consumer based on Consumer group. Along with this it also has code to create AVRO schemas and use schme registry to serialize and deserialize events .
 
 
 **INSTRUCTIONS -**
