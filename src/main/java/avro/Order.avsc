@@ -1,0 +1,19 @@
+{
+"type" : "record",
+"namespace" : "avro.vo",
+"name" : "Order",
+"fields" : [
+    {
+        "name" : "userId",
+        "type" : "string"
+    },
+    {
+        "name" : "totalAmount",
+        "type" : "int"
+    },
+    {
+        "name" : "nbOfItems",
+        "type" : "int"
+    }
+]
+}

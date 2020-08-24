@@ -5,43 +5,16 @@ This contains details to connect to Kafka ,create Producer and consumer to send 
 **INSTRUCTIONS -**
 
 **-- COMMANDS TO RUN FROM CON EMU --**
-1) zkServer   //start zoo keeper service folder 
-    OR //this is not working
-    cd kafka_2.11-2.4.0
-    .\bin\windows\zookeeper-server-start.bat config\zookeeper.properties   
-
-2) .\bin\windows\kafka-server-start.bat .\config\server.properties 
-// in folder C:\kafka_2.11-2.4.0
-
-**--  Start three servers --**
-  - (change broker.id ,listeners and logs.dir )
-  .\bin\windows\kafka-server-start.bat .\config\server.properties 
-  .\bin\windows\kafka-server-start.bat .\config\server-1.properties 
-  .\bin\windows\kafka-server-start.bat .\config\server-2.properties 
-
- **-- PARTITION TOPIC --**
- 1) .\bin\windows\kafka-topics.bat --create --topic my_partition_topic --zookeeper localhost:2181 --replication-factor 3 --partitions 3
-    .\bin\windows\kafka-topics.bat --describe --topic my_partition_topic --zookeeper localhost:2181 
- o/p -->Topic: my_partition_topic       PartitionCount: 3       ReplicationFactor: 3    Configs:
-        Topic: my_partition_topic       Partition: 0    Leader: 2       Replicas: 2,0,1 Isr: 2,0,1
-        Topic: my_partition_topic       Partition: 1    Leader: 0       Replicas: 0,1,2 Isr: 0,1,2
-        Topic: my_partition_topic       Partition: 2    Leader: 1       Replicas: 1,2,0 Isr: 1,2,0
-        
-**-- COMMANDS FOR CYGWIN BASHRC --**
-set JAVA_HOME = /cygdrive/c/Program Files/Java/jdk1.8.0_73
-export JAVA_HOME
-set PATH=%PATH%;$JAVA_HOME\bin
-
-
+Referred link -
 How to install zookeeper on windows
 https://medium.com/@shaaslam/installing-apache-zookeeper-on-windows-45eda303e835
 
 How to install and start kafka on windows 
 https://medium.com/@shaaslam/installing-apache-kafka-on-windows-495f6f2fd3c8
 
-
-
-**-- COMMANDS TO RUN FROM WINDOWS POWERSHELL --**
+Do not use con emu to run kafka server as it gives error regarding port already in use .
+Instead run kafka from windows powershell and zookeeper from conemu. 
+Also you might run into problems where files inside c:/logs are already used ,keep deleting those folders
 1) zkServer   //start zoo keeper service folder 
     OR //this is not working
     cd kafka_2.11-2.4.0
@@ -49,8 +22,7 @@ https://medium.com/@shaaslam/installing-apache-kafka-on-windows-495f6f2fd3c8
 
 2) .\bin\windows\kafka-server-start.bat .\config\server.properties 
 // in folder C:\kafka_2.11-2.4.0
- 
- 
+
 **-- CREATE TOPICS --**
     .\bin\windows\kafka-topics.bat --create --topic my_topic --zookeeper localhost:2181 --replication-factor 1 --partitions 1
 o/p --> Created topic my_topic.
@@ -70,13 +42,25 @@ To list topic use below command
 **-- CREATE CONSUMERS --**
  .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my_topic --from-beginning
  
- 
- 
- **-- REPLICATED TOPICS --**
- 1) Start three servers - (change broker.id ,listeners and logs.dir )
+**--  START THREE SERVERS --**
+  - (change broker.id ,listeners and logs.dir )
   .\bin\windows\kafka-server-start.bat .\config\server.properties 
   .\bin\windows\kafka-server-start.bat .\config\server-1.properties 
   .\bin\windows\kafka-server-start.bat .\config\server-2.properties 
+
+ **-- PARTITION TOPIC --**
+ 1) .\bin\windows\kafka-topics.bat --create --topic my_partition_topic --zookeeper localhost:2181 --replication-factor 3 --partitions 3
+    .\bin\windows\kafka-topics.bat --describe --topic my_partition_topic --zookeeper localhost:2181 
+ o/p -->Topic: my_partition_topic       PartitionCount: 3       ReplicationFactor: 3    Configs:
+        Topic: my_partition_topic       Partition: 0    Leader: 2       Replicas: 2,0,1 Isr: 2,0,1
+        Topic: my_partition_topic       Partition: 1    Leader: 0       Replicas: 0,1,2 Isr: 0,1,2
+        Topic: my_partition_topic       Partition: 2    Leader: 1       Replicas: 1,2,0 Isr: 1,2,0
+        
+ **-- REPLICATED TOPICS --**
+ 1) Start three servers - (change broker.id ,listeners and logs.dir )
+<br/>  .\bin\windows\kafka-server-start.bat .\config\server.properties 
+<br/>  .\bin\windows\kafka-server-start.bat .\config\server-1.properties 
+<br/>  .\bin\windows\kafka-server-start.bat .\config\server-2.properties 
   
  2) .\bin\windows\kafka-topics.bat --create --topic my_replicated_topic --zookeeper localhost:2181 --replication-factor 3 --partitions 1
  
@@ -90,29 +74,34 @@ To list topic use below command
  
  **-- PARTITION TOPIC --**
  1) .\bin\windows\kafka-topics.bat --create --topic my_partition_topic --zookeeper localhost:2181 --replication-factor 3 --partitions 3
-    .\bin\windows\kafka-topics.bat --describe --topic my_partition_topic --zookeeper localhost:2181 
- o/p -->Topic: my_partition_topic       PartitionCount: 3       ReplicationFactor: 3    Configs:
+<br/> .\bin\windows\kafka-topics.bat --describe --topic my_partition_topic --zookeeper localhost:2181 
+<br/>  o/p -->Topic: my_partition_topic       PartitionCount: 3       ReplicationFactor: 3    Configs:
         Topic: my_partition_topic       Partition: 0    Leader: 2       Replicas: 2,0,1 Isr: 2,0,1
         Topic: my_partition_topic       Partition: 1    Leader: 0       Replicas: 0,1,2 Isr: 0,1,2
         Topic: my_partition_topic       Partition: 2    Leader: 1       Replicas: 1,2,0 Isr: 1,2,0
  
  2) .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my_partition_topic --from-beginning
- TO consume only events from a partition
-    .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my_partition_topic --partition 0 --from-beginning // Processed a total of 60 messages
-	--partition 1//Processed a total of 45 messages
-	--partition 2//Processed a total of 45 messages
+<br/>  To consume only events from a partition
+<br/>     .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my_partition_topic --partition 0 --from-beginning // Processed a total of 60 messages
+<br/>  	--partition 1//Processed a total of 45 messages
+<br/>  	--partition 2//Processed a total of 45 messages
  
 **-- WINDOWS COMMANDS --**
    https://stackoverflow.com/questions/12737293/how-do-i-resolve-the-java-net-bindexception-address-already-in-use-jvm-bind
  1) ls command similiar to ll 
  
  2) to find process with a port
- netstat -ano |findStr :2181
- -->  TCP    0.0.0.0:2181           0.0.0.0:0              LISTENING       10748
+<br/>   netstat -ano |findStr :2181
+<br/>  -->  TCP    0.0.0.0:2181           0.0.0.0:0              LISTENING       10748
       TCP    [::]:2181              [::]:0                 LISTENING       10748
 	  
  3) to kill a process//ensure you run IDE as admin
- taskkill /pid 10748 /f 
+<br/>   taskkill /pid 10748 /f 
+ 
+ **-- COMMANDS FOR CYGWIN BASHRC --**
+ set JAVA_HOME = /cygdrive/c/Program Files/Java/jdk1.8.0_73
+ export JAVA_HOME
+ set PATH=%PATH%;$JAVA_HOME\bin
  
  
  **-- KAFKA PERF --**
@@ -128,7 +117,7 @@ To list topic use below command
  2) Update /etc/schema-registry.properties to enable schema to connect to kafka .Uncomment below porperty
  kafkastore.bootstrap.servers=PLAINTEXT://localhost:9092
  3) Copy schema-registry-start.bat & schema-registry-run-class.bat in \bin\windows\ 
- 4) Run cmd  to start schema-registry->
+ 4) Run cmd using conEMU editor to start schema-registry->
   C:\confluent-5.5.1\bin\windows\schema-registry-start.bat C:\confluent-5.5.1\etc\schema-registry\schema-registry.properties
  5) Run ConsumerUsingAvro application to start listening the topic
  6) Run ProducerUsingAvro application to start sending events to topic 
