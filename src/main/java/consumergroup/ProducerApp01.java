@@ -16,8 +16,8 @@ public class ProducerApp01 {
         KafkaProducer producer = new KafkaProducer(prop);
 
         try{
-            Stream.iterate(0, i -> i + 1)
-                    .limit(30)
+            Stream.iterate(500, i -> i + 1)
+                    .limit(10)
                     .forEach(i -> producer.send(new ProducerRecord("my_big_topic"
                             , i.toString(), "message - " + i+"- abc")));
         }catch(Exception e){

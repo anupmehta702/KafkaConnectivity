@@ -15,10 +15,10 @@ public class ConsumerApp {
         prop.put("bootstrap.servers", "localhost:9092,localhost:9093");
         prop.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         prop.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        prop.put("group.id","test");
+        prop.put("group.id","ConsumerApp");
 
         KafkaConsumer<String,String> consumer = new KafkaConsumer<String, String>(prop);
-        consumer.subscribe(Arrays.asList("my_partition_topic_one"));//,"my_partition_topic_two"));
+        consumer.subscribe(Arrays.asList("my_partition_topic"));//,"my_partition_topic_two"));
         //subscribe method reads messages from every partition of topic
         //it helps you manage the partitions
 
@@ -65,4 +65,17 @@ partition 0 - had 25 msgs
 partition 1 - had 12 msgs
 partition 2 - had 13 msgs
 ...
+
+
+Topic:my_partition_topic Partition:2 Offset:0 Key:0 Value:New message - 0
+Topic:my_partition_topic Partition:2 Offset:1 Key:2 Value:New message - 2
+Topic:my_partition_topic Partition:2 Offset:2 Key:3 Value:New message - 3
+Topic:my_partition_topic Partition:2 Offset:3 Key:9 Value:New message - 9
+Topic:my_partition_topic Partition:1 Offset:0 Key:4 Value:New message - 4
+Topic:my_partition_topic Partition:1 Offset:1 Key:6 Value:New message - 6
+Topic:my_partition_topic Partition:0 Offset:0 Key:1 Value:New message - 1
+Topic:my_partition_topic Partition:0 Offset:1 Key:5 Value:New message - 5
+Topic:my_partition_topic Partition:0 Offset:2 Key:7 Value:New message - 7
+Topic:my_partition_topic Partition:0 Offset:3 Key:8 Value:New message - 8
+
  */

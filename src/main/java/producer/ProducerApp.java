@@ -21,7 +21,7 @@ public class ProducerApp {
         producer.send(myMessage);
         */
         try{
-            Stream.iterate(0, i -> i + 1)
+            Stream.iterate(222, i -> i + 1)
                     .limit(10)
                     .forEach(i -> producer.send(new ProducerRecord("my_partition_topic", i.toString(), "New message - " + i)));
         }catch(Exception e){

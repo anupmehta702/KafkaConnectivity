@@ -50,7 +50,7 @@ To list topic use below command
 
  **-- PARTITION TOPIC --**
  1) .\bin\windows\kafka-topics.bat --create --topic my_partition_topic --zookeeper localhost:2181 --replication-factor 3 --partitions 3
-    .\bin\windows\kafka-topics.bat --describe --topic my_partition_topic --zookeeper localhost:2181 
+    .\bin\w-indows\kafka-topics.bat --describe --topic my_partition_topic --zookeeper localhost:2181 
  o/p -->Topic: my_partition_topic       PartitionCount: 3       ReplicationFactor: 3    Configs:
         Topic: my_partition_topic       Partition: 0    Leader: 2       Replicas: 2,0,1 Isr: 2,0,1
         Topic: my_partition_topic       Partition: 1    Leader: 0       Replicas: 0,1,2 Isr: 0,1,2
@@ -122,3 +122,7 @@ To list topic use below command
  5) Run ConsumerUsingAvro application to start listening the topic
  6) Run ProducerUsingAvro application to start sending events to topic 
    
+**-- USING Confluent Kafka --**
+1) Start docker-desktop
+2) hit command docker-compose -f trimdown-docker-compose.yaml up
+
